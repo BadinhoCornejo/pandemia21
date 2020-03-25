@@ -1,0 +1,8 @@
+<div class="quick-profile-container" [matMenuTriggerFor]="menu">
+  <div class="user-icon">
+    <fa-icon [icon]="['fas', 'user']" size="lg"></fa-icon>
+  </div>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="signOut()">Cerrar sesión</button>
+</mat-menu>

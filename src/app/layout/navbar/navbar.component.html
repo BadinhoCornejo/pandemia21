@@ -1,0 +1,25 @@
+<div class="navbar-container">
+  <div class="page-brand-container">
+    <div class="page-brand">
+      <h1 class="brand">PANDEMIA21</h1>
+    </div>
+  </div>
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <app-searchbar></app-searchbar>
+    </div>
+  </div>
+  <div class="user-profile-container">
+    <div class="saved">
+      <fa-icon
+        [icon]="['far', 'bookmark']"
+        size="lg"
+        [fixedWidth]="true"
+      ></fa-icon>
+    </div>
+    <div class="my-profile">
+      <span *ngIf="user === null" (click)="openDialog()">Iniciar sesión</span>
+      <app-quick-profile *ngIf="user !== null"></app-quick-profile>
+    </div>
+  </div>
+</div>

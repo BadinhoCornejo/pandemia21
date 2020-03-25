@@ -1,0 +1,70 @@
+<h1 class="login-title" mat-dialog-title>PANDEMIA21</h1>
+<form [formGroup]="form">
+  <div class="login-container" mat-dialog-content>
+    <div class="log-with-email">
+      <div class="login-email-container">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Ingrese su email"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">
+              Por favor ingresar su email
+            </div>
+            <div *ngIf="f.email.errors.email">
+              Debe ser una dirección de correo electrónico
+            </div>
+          </div>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [type]="!hide ? 'password' : 'text'"
+            placeholder="Ingrese su contraseña"
+            formControlName="usrPassword"
+            [ngClass]="{ 'is-invalid': submitted && f.usrPassword.errors }"
+          />
+          <div
+            *ngIf="submitted && f.usrPassword.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.usrPassword.errors.required">
+              Por favor ingrese su contraseña
+            </div>
+          </div>
+          <a
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Ocultar contraseña'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ !hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </a>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="dialog-actions" mat-dialog-actions>
+      <button class="log-with" (click)="facebookLogin()">
+        <fa-icon [icon]="['fab', 'facebook-f']" size="lg"></fa-icon>
+        <span>Ingresar con Facebook</span>
+      </button>
+      <button class="log-with" (click)="googleLogin()">
+        <fa-icon [icon]="['fab', 'google']" size="lg"></fa-icon>
+        <span>Ingresar con Google</span>
+      </button>
+      <button class="primary-btn" (click)="emailLogin(form)">
+        Iniciar sesión
+      </button>
+
+      <div class="no-account">
+        ¿No tienes una cuenta?<span (click)="openSignup()">Registrarse</span>
+      </div>
+    </div>
+  </div>
+</form>

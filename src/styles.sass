@@ -1,1 +1,98 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Alata|Spartan&display=swap)
+
+$primary-font: 'Alata', sans-serif
+$generic-font: 'Spartan', sans-serif
+$primary-color: #ffffff
+$accent-color: #000000
+
+body
+    font: 100% $generic-font
+    background-color: #ffffff
+
+h1
+    font: 100% $primary-font
+
+.primary-btn
+    width: 222px
+    height: 47px
+    background-color: #ffffff
+
+    border-radius: 6px
+    border: solid 1px #707070
+
+    cursor: pointer
+
+    outline: none
+
+    &:hover
+        border-color: #000000
+
+.login-title
+    font: 26px "Spartan"
+    text-align: center
+
+.login-container
+    height: 100%
+    padding-bottom: 2rem !important
+
+.log-with-email
+    width: 100%
+
+    display: flex
+    justify-content: center
+
+    .login-email-container
+        display: flex
+        flex-direction: column
+        align-self: center
+
+        .mat-form-field
+            width: 322px
+
+.dialog-actions
+    display: flex
+    flex-direction: column
+    justify-content: center
+    height: 100%
+
+    button.primary-btn
+        margin-top: 10px
+
+    .log-with
+        width: 322px
+        height: 47px
+        margin-top: 8px
+        padding-left: 10px
+
+        color: #707070
+        background-color: #ffffff
+        border: solid 1px #707070
+        border-radius: 6px
+        cursor: pointer
+        outline: none
+
+        display: inline-flex
+        justify-content: flex-start
+        span
+            margin-left: 8px
+
+            color: #707070
+
+        &:hover
+            color: #000000
+            border-color: #000000
+
+    .no-account, .already-account
+        display: inline-flex
+        margin-top: 8px
+
+        font: 12px "Spartan"
+        color: #707070
+
+        span
+            margin-left: 4px
+            color: #000000
+            cursor: pointer
+
+.invalid-feedback
+    color: red
