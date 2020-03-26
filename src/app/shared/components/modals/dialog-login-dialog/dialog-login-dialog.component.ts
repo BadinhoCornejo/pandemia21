@@ -48,7 +48,10 @@ export class DialogLoginDialogComponent implements OnInit {
   googleLogin(): void {
     this.authService
       .googleLogin()
-      .then(res => this.router.navigateByUrl(""))
+      .then(res => {
+        this.router.navigateByUrl("");
+        this.onNoClick();
+      })
       .catch(err => console.log(err));
   }
 
@@ -65,7 +68,10 @@ export class DialogLoginDialogComponent implements OnInit {
 
     this.authService
       .emailLogin(this.user)
-      .then(res => this.router.navigateByUrl(""))
+      .then(res => {
+        this.router.navigateByUrl("");
+        this.onNoClick();
+      })
       .catch(err => console.log(err));
   }
 

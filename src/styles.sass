@@ -7,7 +7,7 @@ $accent-color: #000000
 
 body
     font: 100% $generic-font
-    background-color: #ffffff
+    background-color: $primary-color
 
 h1
     font: 100% $primary-font
@@ -15,7 +15,7 @@ h1
 .primary-btn
     width: 222px
     height: 47px
-    background-color: #ffffff
+    background-color: $primary-color
 
     border-radius: 6px
     border: solid 1px #707070
@@ -25,7 +25,7 @@ h1
     outline: none
 
     &:hover
-        border-color: #000000
+        border-color: $accent-color
 
 .login-title
     font: 26px "Spartan"
@@ -65,7 +65,7 @@ h1
         padding-left: 10px
 
         color: #707070
-        background-color: #ffffff
+        background-color: $primary-color
         border: solid 1px #707070
         border-radius: 6px
         cursor: pointer
@@ -79,8 +79,8 @@ h1
             color: #707070
 
         &:hover
-            color: #000000
-            border-color: #000000
+            color: $accent-color
+            border-color: $accent-color
 
     .no-account, .already-account
         display: inline-flex
@@ -91,7 +91,7 @@ h1
 
         span
             margin-left: 4px
-            color: #000000
+            color: $accent-color
             cursor: pointer
 
 .invalid-feedback
