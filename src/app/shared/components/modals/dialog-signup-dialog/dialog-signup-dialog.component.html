@@ -1,6 +1,9 @@
 <h1 class="login-title" mat-dialog-title>
   Mantente informado con las fuentes más confiables
 </h1>
+<div class="user-feedback" *ngIf="userFeedback !== ''">
+  {{ userFeedback }}
+</div>
 <form [formGroup]="form">
   <div class="login-container" mat-dialog-content>
     <div class="log-with-email">

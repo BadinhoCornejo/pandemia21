@@ -14,6 +14,7 @@ import { User } from "../../../../data/schema/user";
 export class DialogSignupDialogComponent implements OnInit {
   form: FormGroup;
   submitted: Boolean = false;
+  userFeedback: string = "";
   user: User;
 
   constructor(
@@ -61,7 +62,7 @@ export class DialogSignupDialogComponent implements OnInit {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(err => console.log(err));
+      .catch(err => (this.userFeedback = err.message));
   }
 
   onNoClick = () => this.dialogRef.close();

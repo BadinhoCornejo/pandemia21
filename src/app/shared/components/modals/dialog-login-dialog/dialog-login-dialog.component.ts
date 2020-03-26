@@ -14,6 +14,7 @@ import { User } from "../../../../data/schema/user";
 export class DialogLoginDialogComponent implements OnInit {
   form: FormGroup;
   submitted: Boolean = false;
+  userFeedback: string = "";
   user: User;
 
   constructor(
@@ -42,7 +43,7 @@ export class DialogLoginDialogComponent implements OnInit {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(err => console.log(err));
+      .catch(err => (this.userFeedback = err.message));
   }
 
   googleLogin(): void {
@@ -52,7 +53,7 @@ export class DialogLoginDialogComponent implements OnInit {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(err => console.log(err));
+      .catch(err => (this.userFeedback = err.message));
   }
 
   emailLogin(): void {
@@ -72,7 +73,12 @@ export class DialogLoginDialogComponent implements OnInit {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(err => console.log(err));
+      .catch(
+        err =>
+          (this.userFeedback = err.code.includes("user-not-found")
+            ? "Ups! Al parecer la dirección de correo electrónico no es válida o no estás registrado."
+            : "Contraseña incorrecta. Por favor, intenta nuevamente")
+      );
   }
 
   openSignup(): void {
