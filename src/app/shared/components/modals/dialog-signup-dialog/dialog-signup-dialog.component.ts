@@ -62,7 +62,12 @@ export class DialogSignupDialogComponent implements OnInit {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(err => (this.userFeedback = err.message));
+      .catch(
+        err =>
+          (this.userFeedback = err.code.includes("email-already-in-use")
+            ? "Esta dirección de correo electrónico ya se encuentra en uso. Intente con una nueva."
+            : "Ups! Algo salión mal. Intente nuevamente.")
+      );
   }
 
   onNoClick = () => this.dialogRef.close();

@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="user-profile-container">
-    <div class="saved">
+    <div class="saved" *ngIf="user !== null">
       <fa-icon
         [icon]="['far', 'bookmark']"
         size="lg"
