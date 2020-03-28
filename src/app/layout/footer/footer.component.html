@@ -1,33 +1,17 @@
-<div class="footer-container" fxLayout="column" fxLayoutGap="32px">
-  <div
-    class="about"
-    fxLayout="row"
-    fxLayoutGap="32px"
-    fxFlex="3"
-  >
-    <div
-      class="about-item"
-      fxFlex="0 1 calc(33.3% - 32px)"
-      fxFlex.lt-md="0 1 calc(50% - 32px)"
-      fxFlex.lt-sm="100%"
-      *ngFor="let item of aboutList"
-    >
+<div class="footer-container">
+  <div class="about row">
+    <div class="about-item col-lg-4 col-xs-12" *ngFor="let item of aboutList">
       <h2>{{ item.title }}</h2>
       <p>{{ item.content }}</p>
     </div>
   </div>
   <div class="divider"></div>
-  <div class="brand" fxLayout="row">
-    <div class="title" fxFlex="70">
+  <div class="brand row">
+    <div class="title col-lg-6 col-xs-12 start-lg center-xs">
       PANDEMIA21
     </div>
-    <ul class="links-list" fxFlex="30" fxLayoutGap="16px"> 
-      <li
-        fxLayout="row wrap"
-        fxFlex="row"
-        fxLayout.lt.sm="column"
-        *ngFor="let link of linksList"
-      >
+    <ul class="links-list row col-lg-6 col-xs-12 end-lg center-xs">
+      <li *ngFor="let link of linksList" class="col-lg-2 col-xs-12">
         {{ link.text }}
       </li>
     </ul>

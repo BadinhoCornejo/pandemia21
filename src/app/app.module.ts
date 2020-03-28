@@ -12,7 +12,6 @@ import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
-import { FlexLayoutModule } from "@angular/flex-layout";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ContentLayoutComponent } from "./layout/content-layout/content-layout.component";
 import { NavbarComponent } from "./layout/navbar/navbar.component";
@@ -26,7 +25,6 @@ import { FooterComponent } from "./layout/footer/footer.component";
     FooterComponent
   ],
   imports: [
-    FlexLayoutModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

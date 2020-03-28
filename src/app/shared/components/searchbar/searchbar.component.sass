@@ -8,6 +8,8 @@
     border-radius: 6px
     border: solid 1px #707070
     
+    @media screen and ( max-width: 504px )
+        height: 26px
 
     .search-icon
         height: 100%
@@ -15,12 +17,19 @@
 
         display: flex
         align-items: center
+
+        @media screen and ( max-width: 504px )
+            font-size: 12px
+
     .searchbar
         flex: 1
 
         border: 0
         margin-left: 7.8px
         font: 18px 'Spartan'
+
+        @media screen and ( max-width: 504px )
+            font-size: 12px
 
         &:focus
             outline: none

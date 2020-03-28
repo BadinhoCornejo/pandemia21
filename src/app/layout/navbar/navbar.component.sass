@@ -21,6 +21,11 @@
             width: auto   
             margin: auto
             margin-left: 32px
+
+        @media screen and ( max-width: 504px )
+            width: 150px            
+            margin-left: 16px
+            margin-right: 16px
         
         .page-brand
             width: 239px
@@ -32,22 +37,29 @@
                 letter-spacing: normal
                 cursor: pointer
 
+                @media screen and ( max-width: 504px )
+                    font-size: 24px
+
     .search-icon
         display: flex
-        margin-bottom: 8px
+        margin-bottom: 24px
         margin-top: auto
         margin-right: 16px
         align-items: center
+        font-size: 12px
 
     .search-bar-container
         width: 552px
         height: 100%
 
         display: flex
-        align-items: center
+        align-items: center        
 
         .search-bar            
             margin-top: auto
+
+            @media screen and ( max-width: 504px )
+                margin-bottom: 18px
 
 
     .user-profile-container
@@ -62,6 +74,11 @@
         @media screen and ( max-width: 1024px )
             margin-right: 32px
             margin-left: 32px
+
+        @media screen and ( max-width: 504px )
+            margin-left: 16px
+            margin-right: 16px
+            margin-top: auto
             
         .saved
             margin-right: 32px
@@ -75,10 +92,21 @@
             &:hover
                 color: #000000
 
+            @media screen and ( max-width: 504px )
+                font-size: 12px
+                margin-right: 16px
+                margin-bottom: 13px
+
         .my-profile
             margin-top: 32px
+
+            @media screen and ( max-width: 504px )
+                margin-bottom: 24px
+
             span
                 cursor: pointer
             
                 &:hover
                     color: #000000
+
+                

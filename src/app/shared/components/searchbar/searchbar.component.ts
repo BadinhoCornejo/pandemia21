@@ -28,7 +28,9 @@ export class SearchbarComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.searchBarField.nativeElement.focus();
+    if (this.isMobile) {
+      this.searchBarField.nativeElement.focus();
+    }
   }
 
   hideSearchBar(): void {
