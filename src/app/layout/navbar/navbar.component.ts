@@ -7,14 +7,35 @@ import { AngularFireAuth } from "@angular/fire/auth";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.sass"]
+  styleUrls: ["./navbar.component.sass"],
+  host: {
+    "(window:resize)": "onResize($event)"
+  }
 })
 export class NavbarComponent implements OnInit {
   user: User;
+  showBrand: Boolean = true;
+  showSearchBar: Boolean;
+  isMobile: Boolean;
 
   constructor(public dialog: MatDialog, private afAuth: AngularFireAuth) {}
 
   ngOnInit() {
+    this.checkAuth();
+
+    window.innerWidth <= 509 ? (this.isMobile = true) : (this.isMobile = false);
+
+    this.manageInitState();
+  }
+
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogLoginDialogComponent, {
+      width: "730px"
+    });
+  }
+
+  checkAuth(): void {
     this.afAuth.authState.subscribe(res => {
       if (res && res.uid) {
         this.user = new User();
@@ -25,9 +46,29 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogLoginDialogComponent, {
-      width: "730px"
-    });
+  //Responsive
+  onResize(event) {
+    if (event.target.innerWidth <= 509) {
+      this.showSearchBar = false;
+      this.isMobile = true;
+    } else {
+      this.isMobile = false;
+      this.showBrand = true;
+      this.showSearchBar = true;
+    }
+  }  
+
+  manageInitState(): void {
+    if (this.isMobile) {
+      this.showSearchBar = false;
+    } else {
+      this.showSearchBar = true;
+    }
   }
+
+  triggerSearchBar(): void {
+    this.showBrand = !this.showBrand;
+    this.showSearchBar = !this.showSearchBar;
+  }
+
 }

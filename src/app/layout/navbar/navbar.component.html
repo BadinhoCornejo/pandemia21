@@ -1,15 +1,27 @@
 <div class="navbar-container">
   <div class="page-brand-container">
-    <div class="page-brand">
+    <div class="page-brand" *ngIf="showBrand">
       <h1 class="brand">PANDEMIA21</h1>
     </div>
   </div>
-  <div class="search-bar-container">
+  <div class="search-bar-container" *ngIf="showSearchBar">
     <div class="search-bar">
-      <app-searchbar></app-searchbar>
+      <app-searchbar
+        [isMobile]="isMobile"
+        [showSearchBar]="showSearchBar"
+        (triggerSearchBar)="triggerSearchBar()"
+      ></app-searchbar>
     </div>
   </div>
+
   <div class="user-profile-container">
+    <div
+      class="search-icon"
+      *ngIf="!showSearchBar"
+      (click)="triggerSearchBar()"
+    >
+      <fa-icon [icon]="['fas', 'search']" size="lg"></fa-icon>
+    </div>
     <div class="saved" *ngIf="user !== null">
       <fa-icon
         [icon]="['far', 'bookmark']"
