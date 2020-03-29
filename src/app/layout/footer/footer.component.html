@@ -11,7 +11,11 @@
       PANDEMIA21
     </div>
     <ul class="links-list row col-lg-6 col-xs-12 end-lg center-xs">
-      <li *ngFor="let link of linksList" class="col-lg-2 col-xs-12">
+      <li
+        *ngFor="let link of linksList"
+        class="col-lg-2 col-xs-12"
+        [routerLink]="[link.link]"
+      >
         {{ link.text }}
       </li>
     </ul>
