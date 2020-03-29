@@ -1,1 +1,27 @@
-<p>about-us works!</p>
+<h1 class="article-title">
+  {{ body.title }}
+</h1>
+
+<div class="article-content">
+  <div class="paragraph" *ngFor="let item of body.content">
+    <div innerHtml="{{ item.paragraph }}"></div>
+    <div class="attachments">
+      <div class="attachment" *ngFor="let attachment of item.attachments">
+        <video
+          *ngIf="attachment.type === 'video'"
+          src="{{ attachment.path }}"
+          controls
+          autoplay
+        ></video>
+        <img
+          *ngIf="attachment.type === 'image'"
+          [ngClass]="{ logo: attachment.path.includes('logo') }"
+          src="{{ attachment.path }}"
+          alt="{{ attachment.alt }}"
+        />
+        <span class="source">{{ attachment.source }}</span>
+      </div>
+    </div>
+  </div>
+  <h5>#YoMeQuedoEnCasa</h5>
+</div>
