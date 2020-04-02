@@ -1,0 +1,8 @@
+{
+  "/test": {
+    "target": "https://us-central1-pandemia21-2c5cd.cloudfunctions.net",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

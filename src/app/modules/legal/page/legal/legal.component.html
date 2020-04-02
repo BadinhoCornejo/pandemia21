@@ -1,1 +1,16 @@
-<p>legal works!</p>
+<h1>Nuestros términos y condiciones</h1>
+
+<div class="article-content">
+  <div class="section" *ngFor="let item of content">
+    <h2>{{ item.subtitle }}</h2>
+    <div class="paragraph" *ngFor="let paragraph of item.paragraphs">
+      <div innerHtml="{{ paragraph }}"></div>
+    </div>
+  </div>
+  <div class="paragraph">
+    <p style="font-weight: bold;">
+      Aceptados todos Términos y condiciones esperamos que tu experiencia en
+      Pandemia21 sea la esperada.
+    </p>
+  </div>
+</div>

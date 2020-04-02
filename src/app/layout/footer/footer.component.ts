@@ -27,12 +27,12 @@ export class FooterComponent implements OnInit {
       link: "/about"
     },
     {
-      text: "Ayuda",
-      link: "/help"
-    },
-    {
       text: "Legal",
       link: "/legal"
+    },
+    {
+      text: "Ayuda",
+      link: "/help"
     }
   ];
 

@@ -15,6 +15,7 @@
         *ngFor="let link of linksList"
         class="col-lg-2 col-xs-12"
         [routerLink]="[link.link]"
+        routerLinkActive="active"
       >
         {{ link.text }}
       </li>

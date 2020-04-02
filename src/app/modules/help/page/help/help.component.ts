@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-help',
-  templateUrl: './help.component.html',
-  styleUrls: ['./help.component.sass']
+  selector: "app-help",
+  templateUrl: "./help.component.html",
+  styleUrls: ["./help.component.sass"]
 })
 export class HelpComponent implements OnInit {
 
-  constructor() { }
+  pandemiaEmail: string = "pandemia21@gmail.com"
 
-  ngOnInit() {
-  }
+  constructor() {}
 
+  ngOnInit() {}
 }
