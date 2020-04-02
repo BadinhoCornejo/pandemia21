@@ -13,6 +13,11 @@ const routes: Routes = [
           import("./modules/home/home.module").then(m => m.HomeModule)
       },
       {
+        path: "profile",
+        loadChildren: () =>
+          import("./modules/profile/profile.module").then(m => m.ProfileModule)
+      },
+      {
         path: "about",
         loadChildren: () =>
           import("./modules/about/about.module").then(m => m.AboutModule)
@@ -26,13 +31,22 @@ const routes: Routes = [
         path: "legal",
         loadChildren: () =>
           import("./modules/legal/legal.module").then(m => m.LegalModule)
+      },
+      {
+        path: "**",
+        loadChildren: () =>
+          import("./modules/not-found/not-found.module").then(
+            m => m.NotFoundModule
+          )
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
