@@ -1,9 +1,16 @@
-<div class="quick-profile-container" [matMenuTriggerFor]="menu">
+<div
+  class="quick-profile-container"
+  [matMenuTriggerFor]="menu"
+  *ngIf="!user.photoUrl"
+>
   <div class="user-icon">
     <fa-icon [icon]="['fas', 'user']" size="lg"></fa-icon>
   </div>
 </div>
+<div class="user-photo" [matMenuTriggerFor]="menu" *ngIf="user.photoUrl">
+  <img src="{{ user.photoUrl }}" alt="perfil" />
+</div>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item [routerLink]="['/profile']">Perfil</button>
+  <button mat-menu-item [routerLink]="['/me']">Perfil</button>
   <button mat-menu-item (click)="signOut()">Cerrar sesión</button>
 </mat-menu>

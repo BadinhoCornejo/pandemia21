@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { User } from "../../../data/schema/user";
 
 @Component({
   selector: "app-quick-profile",
@@ -7,7 +8,14 @@ import { AngularFireAuth } from "@angular/fire/auth";
   styleUrls: ["./quick-profile.component.sass"]
 })
 export class QuickProfileComponent implements OnInit {
-  constructor(private afAuth: AngularFireAuth) {}
+  user: User;
+
+  constructor(private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe(res => {
+      this.user = new User();
+      this.user.photoUrl = res.photoURL;
+    });
+  }
 
   ngOnInit() {}
 

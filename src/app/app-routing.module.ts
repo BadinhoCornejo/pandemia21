@@ -13,7 +13,7 @@ const routes: Routes = [
           import("./modules/home/home.module").then(m => m.HomeModule)
       },
       {
-        path: "profile",
+        path: "me",
         loadChildren: () =>
           import("./modules/profile/profile.module").then(m => m.ProfileModule)
       },

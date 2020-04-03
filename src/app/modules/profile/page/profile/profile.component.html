@@ -1,1 +1,18 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <div class="user-data">
+    <h3>{{ user.name }}</h3>
+    <span>{{ user.email }}</span>
+  </div>
+  <div class="user-photo" *ngIf="user.photoUrl">
+    <img src="{{ user.photoUrl }}" alt="perfil" />
+  </div>
+  <div class="quick-profile-container" *ngIf="!user.photoUrl">
+    <div class="user-icon">
+      <fa-icon [icon]="['fas', 'user']" size="lg"></fa-icon>
+    </div>
+  </div>
+</div>
+
+<mat-divider
+  style="max-width: 700px; margin-left: auto; margin-right: auto;"
+></mat-divider>
