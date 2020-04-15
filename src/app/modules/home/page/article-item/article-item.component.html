@@ -1,1 +1,27 @@
-<p>article-item works!</p>
+<mat-card class="article-card">
+  <mat-card-header>
+    <div mat-card-avatar class="article-header-image">
+      <img src="{{ logo }}" alt="{{ article.source }}" />
+    </div>
+    <mat-card-title>{{ article.title }}</mat-card-title>
+    <mat-card-subtitle>
+      <div class="card-subtitle">
+        <div class="source">{{ article.source }}</div>
+        <div class="dot">°</div>
+        <div class="date">{{ articleDate }}</div>
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{ article.media }}" alt="{{ article.title }}" />
+  <mat-card-content>
+    <p>
+      {{ article.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>
+      <a href="{{ article.url }}" target="_blank">VER NOTICIA COMPLETA </a>
+    </button>
+    <app-bookmark class="saved" *ngIf="user" [article]="article"></app-bookmark>
+  </mat-card-actions>
+</mat-card>

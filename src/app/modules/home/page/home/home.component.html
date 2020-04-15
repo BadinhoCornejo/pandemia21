@@ -4,4 +4,12 @@
     class="elfsight-app-0399cea0-2570-42be-a1d2-b6e5c8c27a2e"
     style="position: relative;"
   ></div>
+  <div class="news-container" *ngIf="news.length">
+    <div
+      class="new-item"
+      *ngFor="let article of news"
+    >
+      <app-article-item [article]="article"></app-article-item>
+    </div>
+  </div>
 </div>

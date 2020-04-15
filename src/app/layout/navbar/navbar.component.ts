@@ -9,11 +9,11 @@ import { AngularFireAuth } from "@angular/fire/auth";
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.sass"],
   host: {
-    "(window:resize)": "onResize($event)"
-  }
+    "(window:resize)": "onResize($event)",
+  },
 })
 export class NavbarComponent implements OnInit {
-  user: User;
+  user: User = null;
   showBrand: Boolean = true;
   showSearchBar: Boolean;
   isMobile: Boolean;
@@ -23,20 +23,19 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.checkAuth();
 
-    window.innerWidth <= 509 ? (this.isMobile = true) : (this.isMobile = false);
+    window.innerWidth <= 504 ? (this.isMobile = true) : (this.isMobile = false);
 
     this.manageInitState();
   }
 
-  
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogLoginDialogComponent, {
-      width: "730px"
+      width: "auto",
     });
   }
 
   checkAuth(): void {
-    this.afAuth.authState.subscribe(res => {
+    this.afAuth.authState.subscribe((res) => {
       if (res && res.uid) {
         this.user = new User();
         this.user.email = res.email;
@@ -48,7 +47,7 @@ export class NavbarComponent implements OnInit {
 
   //Responsive
   onResize(event) {
-    if (event.target.innerWidth <= 509) {
+    if (event.target.innerWidth <= 504) {
       this.showSearchBar = false;
       this.isMobile = true;
     } else {
@@ -56,7 +55,7 @@ export class NavbarComponent implements OnInit {
       this.showBrand = true;
       this.showSearchBar = true;
     }
-  }  
+  }
 
   manageInitState(): void {
     if (this.isMobile) {
@@ -67,8 +66,9 @@ export class NavbarComponent implements OnInit {
   }
 
   triggerSearchBar(): void {
+    console.log("Hidden brand");
+    
     this.showBrand = !this.showBrand;
     this.showSearchBar = !this.showSearchBar;
   }
-
 }

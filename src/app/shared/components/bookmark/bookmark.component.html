@@ -1,0 +1,16 @@
+<div class="saved-component" (click)="verifyArticle()">
+  <fa-icon
+    *ngIf="!isSaved"
+    class="no-saved"
+    [icon]="['far', 'bookmark']"
+    size="lg"
+    [fixedWidth]="true"
+  ></fa-icon>
+  <fa-icon
+    *ngIf="isSaved"
+    class="is-saved"
+    [icon]="['fas', 'bookmark']"
+    size="lg"
+    [fixedWidth]="true"
+  ></fa-icon>
+</div>

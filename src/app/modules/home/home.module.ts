@@ -10,8 +10,6 @@ import { ArticleItemComponent } from "./page/article-item/article-item.component
 
 @NgModule({
   declarations: [HomeComponent, ArticleItemComponent, ArticleDetailsComponent],
-  imports: [HomeRoutingModule, SharedModule],
-  exports: [],
-  providers: []
+  imports: [HomeRoutingModule, SharedModule]
 })
 export class HomeModule {}

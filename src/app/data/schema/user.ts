@@ -1,7 +1,11 @@
+import { Article } from "./article";
+
 export class User {
-  id: string;
+  uid: string;
   email: string;
   name: string;
   photoUrl: string;
   usrPassword: string;
+  history: Array<string>;
+  saved: Array<string>;
 }

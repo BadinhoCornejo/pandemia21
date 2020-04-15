@@ -35,6 +35,8 @@ export class SearchbarComponent implements OnInit, AfterViewInit {
 
   hideSearchBar(): void {
     if (this.isMobile) {
+      console.log("Trigger searchBar");
+      
       this.triggerSearchBar.emit();
     }
   }

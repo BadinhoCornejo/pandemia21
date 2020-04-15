@@ -13,7 +13,7 @@ import {
   faUser,
   faArrowCircleRight,
   faLink,
-  fas
+  fas,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { far } from "@fortawesome/free-regular-svg-icons";
@@ -23,7 +23,7 @@ import {
   faTwitter,
   faFacebookMessenger,
   faPinterest,
-  fab
+  fab,
 } from "@fortawesome/free-brands-svg-icons";
 
 //COMPONENTS
@@ -31,9 +31,13 @@ import { SearchbarComponent } from "./components/searchbar/searchbar.component";
 import { QuickProfileComponent } from "./components/quick-profile/quick-profile.component";
 import { DialogLoginDialogComponent } from "./components/modals/dialog-login-dialog/dialog-login-dialog.component";
 import { DialogSignupDialogComponent } from "./components/modals/dialog-signup-dialog/dialog-signup-dialog.component";
+import { BookmarkComponent } from "./components/bookmark/bookmark.component";
 
 //SERVICES
 import { AuthService } from "./services/auth.service";
+import { NewsService } from "./services/news.service";
+import { ArticlesService } from "./services/articles.service";
+import { UsersService } from "./services/users.service";
 
 library.add(
   faUser,
@@ -53,7 +57,8 @@ library.add(
     SearchbarComponent,
     QuickProfileComponent,
     DialogLoginDialogComponent,
-    DialogSignupDialogComponent
+    DialogSignupDialogComponent,
+    BookmarkComponent,
   ],
   entryComponents: [DialogLoginDialogComponent, DialogSignupDialogComponent],
   imports: [
@@ -62,9 +67,9 @@ library.add(
     ReactiveFormsModule,
     RouterModule,
     FontAwesomeModule,
-    MaterialModule
+    MaterialModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, NewsService, UsersService, ArticlesService],
   exports: [
     CommonModule,
     FormsModule,
@@ -75,7 +80,8 @@ library.add(
     SearchbarComponent,
     QuickProfileComponent,
     DialogSignupDialogComponent,
-    DialogLoginDialogComponent
-  ]
+    DialogLoginDialogComponent,
+    BookmarkComponent,
+  ],
 })
 export class SharedModule {}

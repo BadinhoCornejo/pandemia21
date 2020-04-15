@@ -24,7 +24,7 @@ import { FooterComponent } from "./layout/footer/footer.component";
     AppComponent,
     ContentLayoutComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +34,9 @@ import { FooterComponent } from "./layout/footer/footer.component";
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

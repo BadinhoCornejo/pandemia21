@@ -38,7 +38,7 @@ export class DialogSignupDialogComponent implements OnInit {
 
   openLogin(): void {
     const dialogRef = this.dialog.open(DialogLoginDialogComponent, {
-      width: "730px"
+      width: "auto"
     });
 
     this.onNoClick();
