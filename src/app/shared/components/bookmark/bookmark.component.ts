@@ -21,7 +21,7 @@ export class BookmarkComponent implements OnInit {
   constructor(
     private af: AngularFireAuth,
     private userService: UsersService,
-    private articleService: ArticlesService
+    private articlesService: ArticlesService
   ) {
     this.checkAuth();
   }
@@ -51,7 +51,7 @@ export class BookmarkComponent implements OnInit {
       const saved = new Array<Article>();
 
       this.user.saved.map((item) => {
-        this.articleService.getArticleByUrl(item).subscribe((res) => {
+        this.articlesService.getArticleByUrl(item).subscribe((res) => {
           if (res[0]) {
             const _article = res[0] as Article;
             saved.push(_article);
@@ -69,14 +69,16 @@ export class BookmarkComponent implements OnInit {
 
   verifyArticle() {
     if (!this.isSaved) {
-      this.articleService.getArticleByUrl(this.article.url).subscribe((res) => {
-        if (!res[0]) {
-          this.articleService.addArticle(this.article);
-          this.saveArticle();
-        } else {
-          this.saveArticle();
-        }
-      });
+      this.articlesService
+        .getArticleByUrl(this.article.url)
+        .subscribe((res) => {
+          if (!res[0]) {
+            this.articlesService.addArticle(this.article);
+            this.saveArticle();
+          } else {
+            this.saveArticle();
+          }
+        });
     } else {
       this.unSaveArticle();
     }
@@ -85,7 +87,7 @@ export class BookmarkComponent implements OnInit {
   }
 
   saveArticle() {
-    this.articleService.getArticleByUrl(this.article.url).subscribe((data) => {
+    this.articlesService.getArticleByUrl(this.article.url).subscribe((data) => {
       const _article = data[0] as Article;
       this.user.saved.push(_article.url);
 

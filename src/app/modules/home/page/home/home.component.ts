@@ -1,16 +1,39 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, DoCheck } from "@angular/core";
 import { NewsContextService } from "../../../../shared/services/news-context.service";
 import { Article } from "../../../../data/schema/article";
+
+import { SearchbarContextService } from "../../../../shared/services/searchbar-context.service";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.sass"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, DoCheck {
   news = new Array<Article>();
+  newsBackUp: Array<Article>;
 
-  constructor(private newsContext: NewsContextService) {}
+  constructor(
+    private newsContext: NewsContextService,
+    private searchBarContext: SearchbarContextService
+  ) {}
+
+  ngDoCheck(): void {
+    this.searchBarContext.currentSearchValue.subscribe(
+      (value: any) => {
+        if (value.length > 0) {
+          this.news = this.newsBackUp.filter(
+            (article) =>
+              article.title.includes(value) ||
+              article.source.toLowerCase().includes(value)
+          );
+        } else {
+          this.news = this.newsBackUp;
+        }
+      },
+      (err: any) => console.error(err)
+    );
+  }
 
   ngOnInit() {
     this.getNews();
@@ -18,7 +41,10 @@ export class HomeComponent implements OnInit {
 
   getNews() {
     this.newsContext.currentNews.subscribe(
-      (value: any) => (this.news = this.sortData(value)),
+      (value: any) => {
+        this.news = this.sortData(value);
+        this.newsBackUp = this.news;
+      },
       (error: any) => console.error(JSON.stringify(error))
     );
   }

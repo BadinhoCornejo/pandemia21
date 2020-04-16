@@ -6,15 +6,18 @@ import {
   AfterViewInit,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  DoCheck,
 } from "@angular/core";
+
+import { SearchbarContextService } from "../../services/searchbar-context.service";
 
 @Component({
   selector: "app-searchbar",
   templateUrl: "./searchbar.component.html",
-  styleUrls: ["./searchbar.component.sass"]
+  styleUrls: ["./searchbar.component.sass"],
 })
-export class SearchbarComponent implements OnInit, AfterViewInit {
+export class SearchbarComponent implements OnInit, DoCheck, AfterViewInit {
   @ViewChild("searchBar", { static: false }) searchBarField: ElementRef;
 
   @Output("triggerSearchBar")
@@ -23,9 +26,15 @@ export class SearchbarComponent implements OnInit, AfterViewInit {
   @Input() isMobile: Boolean;
   @Input() showSearchBar: Boolean;
 
-  constructor() {}
+  searchValue: string;
+
+  constructor(private searchBarContex: SearchbarContextService) {}
 
   ngOnInit() {}
+
+  ngDoCheck() {
+    this.searchBarContex.setSearchValue(this.searchValue);
+  }
 
   ngAfterViewInit() {
     if (this.isMobile) {
@@ -36,7 +45,7 @@ export class SearchbarComponent implements OnInit, AfterViewInit {
   hideSearchBar(): void {
     if (this.isMobile) {
       console.log("Trigger searchBar");
-      
+
       this.triggerSearchBar.emit();
     }
   }
