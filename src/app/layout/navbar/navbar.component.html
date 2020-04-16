@@ -22,7 +22,7 @@
     >
       <fa-icon [icon]="['fas', 'search']" size="lg"></fa-icon>
     </div>
-    <div class="saved" *ngIf="user !== null">
+    <div class="saved" *ngIf="user !== null" [routerLink]="['/saved']">
       <fa-icon
         [icon]="['far', 'bookmark']"
         size="lg"

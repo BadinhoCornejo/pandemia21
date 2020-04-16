@@ -1,0 +1,5 @@
+<div class="news-container" *ngIf="news.length">
+  <div class="new-item" *ngFor="let article of news">
+    <app-article-item [article]="article"></app-article-item>
+  </div>
+</div>

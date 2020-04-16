@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { UsersService } from "../../services/users.service";
 import { ArticlesService } from "../../services/articles.service";
+import { SavedContextService } from "../../services/saved-context.service";
 
 import { Article } from "../../../data/schema/article";
 import { User } from "../../../data/schema/user";
@@ -21,7 +22,8 @@ export class BookmarkComponent implements OnInit {
   constructor(
     private af: AngularFireAuth,
     private userService: UsersService,
-    private articlesService: ArticlesService
+    private articlesService: ArticlesService,
+    private savedNewsContext: SavedContextService
   ) {
     this.checkAuth();
   }

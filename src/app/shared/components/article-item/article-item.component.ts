@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from "@angular/core";
 
 import { AngularFireAuth } from "@angular/fire/auth";
-import { UsersService } from "../../../../shared/services/users.service";
-import { ArticlesService } from "../../../../shared/services/articles.service";
+import { UsersService } from "../../services/users.service";
+import { ArticlesService } from "../../services/articles.service";
 
-import { Article } from "../../../../data/schema/article";
-import { User } from "../../../../data/schema/user";
+import { Article } from "../../../data/schema/article";
+import { User } from "../../../data/schema/user";
 
 import * as moment from "moment";
 import localization from "moment/locale/es";

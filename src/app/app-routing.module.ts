@@ -22,6 +22,12 @@ const routes: Routes = [
           ),
       },
       {
+        path: "saved",
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import("./modules/saved/saved.module").then((m) => m.SavedModule),
+      },
+      {
         path: "about",
         loadChildren: () =>
           import("./modules/about/about.module").then((m) => m.AboutModule),

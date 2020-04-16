@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     this.searchBarContext.currentSearchValue.subscribe(
       (value: any) => {
-        if (value.length > 0) {
+        if (value && value.length > 0) {
           this.news = this.newsBackUp.filter(
             (article) =>
               article.title.includes(value) ||

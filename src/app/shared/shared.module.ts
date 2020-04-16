@@ -32,6 +32,7 @@ import { QuickProfileComponent } from "./components/quick-profile/quick-profile.
 import { DialogLoginDialogComponent } from "./components/modals/dialog-login-dialog/dialog-login-dialog.component";
 import { DialogSignupDialogComponent } from "./components/modals/dialog-signup-dialog/dialog-signup-dialog.component";
 import { BookmarkComponent } from "./components/bookmark/bookmark.component";
+import { ArticleItemComponent } from "./components/article-item/article-item.component";
 
 //SERVICES
 import { AuthService } from "./services/auth.service";
@@ -59,6 +60,7 @@ library.add(
     DialogLoginDialogComponent,
     DialogSignupDialogComponent,
     BookmarkComponent,
+    ArticleItemComponent,
   ],
   entryComponents: [DialogLoginDialogComponent, DialogSignupDialogComponent],
   imports: [
@@ -82,6 +84,7 @@ library.add(
     DialogSignupDialogComponent,
     DialogLoginDialogComponent,
     BookmarkComponent,
+    ArticleItemComponent,
   ],
 })
 export class SharedModule {}
