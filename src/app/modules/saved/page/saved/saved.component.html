@@ -3,3 +3,11 @@
     <app-article-item [article]="article"></app-article-item>
   </div>
 </div>
+
+<div class="list-empty" *ngIf="!news.length">
+  ¡Al parecer no has guardado ningún artículo!
+  <img src="assets/img/list-is-empty-3.png" alt="lista-vacia" />
+  <span
+    >Ilustración por<a href="https://icons8.com">icons8.com</a></span
+  >
+</div>

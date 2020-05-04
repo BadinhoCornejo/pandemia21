@@ -11,11 +11,11 @@ import * as moment from "moment";
 import localization from "moment/locale/es";
 
 @Component({
-  selector: "app-article-item",
-  templateUrl: "./article-item.component.html",
-  styleUrls: ["./article-item.component.sass"],
+  selector: "app-article-md-item",
+  templateUrl: "./article-md-item.component.html",
+  styleUrls: ["./article-md-item.component.sass"],
 })
-export class ArticleItemComponent implements OnInit {
+export class ArticleMdItemComponent implements OnInit {
   @Input() article: Article;
   articleDate: string;
   logo: string;
@@ -119,4 +119,5 @@ export class ArticleItemComponent implements OnInit {
   noRepeat(p: Array<string>): Array<string> {
     return p.filter((item, index) => p.indexOf(item) == index);
   }
+
 }

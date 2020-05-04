@@ -6,10 +6,12 @@ import { Router } from "@angular/router";
 import { AuthService } from "../../../services/auth.service";
 import { User } from "../../../../data/schema/user";
 
+import { ErrorMessages as errorMessages } from "../../../resources/auth-feedback-messages.js";
+
 @Component({
   selector: "dialog-signup-dialog",
   templateUrl: "./dialog-signup-dialog.component.html",
-  styleUrls: ["./dialog-signup-dialog.component.sass"]
+  styleUrls: ["./dialog-signup-dialog.component.sass"],
 })
 export class DialogSignupDialogComponent implements OnInit {
   form: FormGroup;
@@ -26,7 +28,7 @@ export class DialogSignupDialogComponent implements OnInit {
   ) {
     this.form = formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
-      usrPassword: ["", [Validators.required, Validators.minLength(6)]]
+      usrPassword: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -38,7 +40,7 @@ export class DialogSignupDialogComponent implements OnInit {
 
   openLogin(): void {
     const dialogRef = this.dialog.open(DialogLoginDialogComponent, {
-      width: "auto"
+      width: "auto",
     });
 
     this.onNoClick();
@@ -58,16 +60,21 @@ export class DialogSignupDialogComponent implements OnInit {
 
     this.authService
       .signUp(this.user)
-      .then(res => {
+      .then((res) => {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(
-        err =>
-          (this.userFeedback = err.code.includes("email-already-in-use")
-            ? "Esta dirección de correo electrónico ya se encuentra en uso. Intente con una nueva."
-            : "Ups! Algo salión mal. Intente nuevamente.")
-      );
+      .catch((err) => {
+        console.log(err.code);
+        let errorCode = errorMessages.find((i) => i.errorCode === err.code);
+
+        if (errorCode) {
+          this.userFeedback = errorCode.message;
+        } else {
+          this.userFeedback =
+            "Ups! Algo salió mal. Por favor, intenta nuevamente.";
+        }
+      });
   }
 
   onNoClick = () => this.dialogRef.close();

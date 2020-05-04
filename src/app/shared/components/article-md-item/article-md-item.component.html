@@ -1,0 +1,20 @@
+<mat-card class="article-card">
+  <mat-card-header>
+    <div mat-card-avatar class="article-header-image">
+      <img src="{{ logo }}" alt="{{ article.source }}" />
+    </div>
+    <mat-card-title class="card-title" (click)="verifyArticle()">
+      <a href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <div class="card-subtitle">
+        <div class="source">{{ article.source }}</div>
+        <div class="dot">°</div>
+        <div class="date">{{ articleDate }}</div>
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <app-bookmark class="saved" *ngIf="user" [article]="article"></app-bookmark>
+  </mat-card-actions>
+</mat-card>

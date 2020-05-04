@@ -1,6 +1,31 @@
 <div class="profile-container">
   <div class="user-data">
-    <h3>{{ user.name }}</h3>
+    <div class="username-container">
+      <h3 *ngIf="user.name && !edit">{{ user.name }}</h3>
+      <h3 *ngIf="!user.name">Agrega tu nombre!</h3>
+      <div class="edit-name-icon" (click)="isEdit()">
+        <fa-icon *ngIf="!edit" [icon]="['fas', 'edit']" size="sm"></fa-icon>
+      </div>
+      <form *ngIf="edit" [formGroup]="form" class="edit-name">
+        <mat-form-field class="name-field">
+          <mat-label>Ingrese su nombre</mat-label>
+          <input
+            matInput
+            formControlName="username"
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+            placeholder="{{ user.name ? user.name : 'Ingrese su nombre' }}"
+          />
+        </mat-form-field>
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">
+            Por favor ingresar su nombre
+          </div>
+        </div>
+        <button class="primary-btn" (click)="editUsername(form)">
+          Guardar
+        </button>
+      </form>
+    </div>
     <span>{{ user.email }}</span>
   </div>
   <div class="user-photo" *ngIf="user.photoUrl">
@@ -16,3 +41,18 @@
 <mat-divider
   style="max-width: 700px; margin-left: auto; margin-right: auto;"
 ></mat-divider>
+
+<div class="mycontent-container">
+  <div class="history-container" *ngIf="history.length">
+    <p>Historial</p>
+    <div class="new-item" *ngFor="let article of history">
+      <app-article-md-item [article]="article"></app-article-md-item>
+    </div>
+  </div>
+  <div class="saved-container" *ngIf="saved.length">
+    <p>Guardados</p>
+    <div class="new-item" *ngFor="let article of saved">
+      <app-article-md-item [article]="article"></app-article-md-item>
+    </div>
+  </div>
+</div>

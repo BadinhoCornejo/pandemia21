@@ -33,6 +33,8 @@ import { DialogLoginDialogComponent } from "./components/modals/dialog-login-dia
 import { DialogSignupDialogComponent } from "./components/modals/dialog-signup-dialog/dialog-signup-dialog.component";
 import { BookmarkComponent } from "./components/bookmark/bookmark.component";
 import { ArticleItemComponent } from "./components/article-item/article-item.component";
+import { ArticleMdItemComponent } from "./components/article-md-item/article-md-item.component";
+import { ProgressComponent } from "./components/progress/progress.component";
 
 //SERVICES
 import { AuthService } from "./services/auth.service";
@@ -61,6 +63,8 @@ library.add(
     DialogSignupDialogComponent,
     BookmarkComponent,
     ArticleItemComponent,
+    ArticleMdItemComponent,
+    ProgressComponent,
   ],
   entryComponents: [DialogLoginDialogComponent, DialogSignupDialogComponent],
   imports: [
@@ -85,6 +89,8 @@ library.add(
     DialogLoginDialogComponent,
     BookmarkComponent,
     ArticleItemComponent,
+    ArticleMdItemComponent,
+    ProgressComponent,
   ],
 })
 export class SharedModule {}

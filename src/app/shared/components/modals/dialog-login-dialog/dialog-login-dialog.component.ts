@@ -6,10 +6,12 @@ import { Router } from "@angular/router";
 import { AuthService } from "../../../services/auth.service";
 import { User } from "../../../../data/schema/user";
 
+import { ErrorMessages as errorMessages } from "../../../resources/auth-feedback-messages.js";
+
 @Component({
   selector: "dialog-login-dialog",
   templateUrl: "./dialog-login-dialog.component.html",
-  styleUrls: ["./dialog-login-dialog.component.sass"]
+  styleUrls: ["./dialog-login-dialog.component.sass"],
 })
 export class DialogLoginDialogComponent implements OnInit {
   form: FormGroup;
@@ -26,7 +28,7 @@ export class DialogLoginDialogComponent implements OnInit {
   ) {
     this.form = formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
-      usrPassword: ["", [Validators.required, Validators.minLength(6)]]
+      usrPassword: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -39,21 +41,39 @@ export class DialogLoginDialogComponent implements OnInit {
   facebookLogin(): void {
     this.authService
       .facebookLogin()
-      .then(res => {
+      .then((res) => {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(err => (this.userFeedback = err.message));
+      .catch((err) => {
+        let errorCode = errorMessages.find((i) => i.errorCode === err.code);
+
+        if (errorCode) {
+          this.userFeedback = errorCode.message;
+        } else {
+          this.userFeedback =
+            "Ups! Algo salió mal. Por favor, intenta nuevamente.";
+        }
+      });
   }
 
   googleLogin(): void {
     this.authService
       .googleLogin()
-      .then(res => {
+      .then((res) => {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(err => (this.userFeedback = err.message));
+      .catch((err) => {
+        let errorCode = errorMessages.find((i) => i.errorCode === err.code);
+
+        if (errorCode) {
+          this.userFeedback = errorCode.message;
+        } else {
+          this.userFeedback =
+            "Ups! Algo salió mal. Por favor, intenta nuevamente.";
+        }
+      });
   }
 
   emailLogin(): void {
@@ -69,21 +89,25 @@ export class DialogLoginDialogComponent implements OnInit {
 
     this.authService
       .emailLogin(this.user)
-      .then(res => {
+      .then((res) => {
         this.router.navigateByUrl("");
         this.onNoClick();
       })
-      .catch(
-        err =>
-          (this.userFeedback = err.code.includes("user-not-found")
-            ? "Ups! Al parecer la dirección de correo electrónico no es válida o no estás registrado."
-            : "Contraseña incorrecta. Por favor, intenta nuevamente")
-      );
+      .catch((err) => {
+        let errorCode = errorMessages.find((i) => i.errorCode === err.code);
+
+        if (errorCode) {
+          this.userFeedback = errorCode.message;
+        } else {
+          this.userFeedback =
+            "Ups! Algo salió mal. Por favor, intenta nuevamente.";
+        }
+      });
   }
 
   openSignup(): void {
     const dialogRef = this.dialog.open(DialogSignupDialogComponent, {
-      width: "auto"
+      width: "auto",
     });
 
     this.onNoClick();

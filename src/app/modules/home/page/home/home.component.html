@@ -9,4 +9,7 @@
       <app-article-item [article]="article"></app-article-item>
     </div>
   </div>
+  <div class="progress" *ngIf="!news.length">
+    <app-progress></app-progress>
+  </div>
 </div>
