@@ -12,6 +12,7 @@ import { SearchbarContextService } from "../../../../shared/services/searchbar-c
 export class HomeComponent implements OnInit, DoCheck {
   news = new Array<Article>();
   newsBackUp: Array<Article>;
+  showMap: Boolean = true;
 
   constructor(
     private newsContext: NewsContextService,
@@ -24,11 +25,13 @@ export class HomeComponent implements OnInit, DoCheck {
         if (value && value.length > 0) {
           this.news = this.newsBackUp.filter(
             (article) =>
-              article.title.includes(value) ||
-              article.source.toLowerCase().includes(value)
+              article.title.toLowerCase().includes(value.toLowerCase()) ||
+              article.source.toLowerCase().includes(value.toLowerCase())
           );
+          this.showMap = false;
         } else {
           this.news = this.newsBackUp;
+          this.showMap = true;
         }
       },
       (err: any) => console.error(err)

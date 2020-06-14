@@ -11,6 +11,7 @@ import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 export class ProgressComponent implements OnInit {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'indeterminate';
+  diameter: Number = 32;
 
   constructor() { }
 

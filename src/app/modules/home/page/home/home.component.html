@@ -1,15 +1,31 @@
 <div class="home-container">
-  <h1>Coronavirus (COVID-19) Casos a nivel global</h1>
-  <!-- <div
+  <h1 *ngIf="showMap">Coronavirus (COVID-19) Casos a nivel global</h1>
+  <div
+    *ngIf="showMap"
     class="elfsight-app-0399cea0-2570-42be-a1d2-b6e5c8c27a2e"
     style="position: relative;"
-  ></div> -->
+  ></div>
+
   <div class="news-container" *ngIf="news.length">
     <div class="new-item" *ngFor="let article of news">
-      <app-article-item [article]="article"></app-article-item>
+      <app-article-item [article]="article" *ngIf="article"></app-article-item>
+      <div class="progress" *ngIf="!article">
+        <app-progress></app-progress>
+        <span>
+          Cargando noticias...
+        </span>
+      </div>
     </div>
   </div>
-  <div class="progress" *ngIf="!news.length">
+  <div class="progress" *ngIf="!news.length && showMap">
     <app-progress></app-progress>
+    <span>
+      Cargando noticias...
+    </span>
+  </div>
+  <div class="list-empty" *ngIf="!news.length && !showMap">
+    ¡No se encontraron resultados!
+    <img src="assets/img/list-is-empty-3.png" alt="lista-vacia" />
+    <span>Ilustración por<a href="https://icons8.com">icons8.com</a></span>
   </div>
 </div>

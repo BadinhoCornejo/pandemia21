@@ -51,7 +51,7 @@ export class HistoryContextService {
 
   private loadArticles() {
     if (this.user.history.length) {
-      this.user.history.map((articleUrl) => {
+      this.user.history.reverse().map((articleUrl) => {
         this.articlesService.getArticleByUrl(articleUrl).subscribe(
           (res) => {
             const article = res[0] as Article;

@@ -18,6 +18,7 @@ export class DialogSignupDialogComponent implements OnInit {
   submitted: Boolean = false;
   userFeedback: string = "";
   user: User;
+  hide = false;
 
   constructor(
     public dialogRef: MatDialogRef<DialogSignupDialogComponent>,
@@ -46,7 +47,7 @@ export class DialogSignupDialogComponent implements OnInit {
     this.onNoClick();
   }
 
-  signUp(): void {
+  signUp(form): void {
     this.submitted = true;
 
     if (this.form.invalid) {

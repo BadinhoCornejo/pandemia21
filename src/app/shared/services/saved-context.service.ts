@@ -50,7 +50,7 @@ export class SavedContextService {
 
   private loadArticles() {
     if (this.user.saved.length) {
-      this.user.saved.map((articleUrl) => {
+      this.user.saved.reverse().map((articleUrl) => {
         this.articlesService.getArticleByUrl(articleUrl).subscribe(
           (res) => {
             const article = res[0] as Article;

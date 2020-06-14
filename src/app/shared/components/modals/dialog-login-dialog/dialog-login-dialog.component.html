@@ -53,6 +53,9 @@
       </div>
     </div>
     <div class="dialog-actions" mat-dialog-actions>
+      <button class="primary-btn" (click)="emailLogin(form)">
+        Iniciar sesión
+      </button>
       <button class="log-with" (click)="facebookLogin()">
         <fa-icon [icon]="['fab', 'facebook-f']" size="lg"></fa-icon>
         <span>Ingresar con Facebook</span>
@@ -60,9 +63,6 @@
       <button class="log-with" (click)="googleLogin()">
         <fa-icon [icon]="['fab', 'google']" size="lg"></fa-icon>
         <span>Ingresar con Google</span>
-      </button>
-      <button class="primary-btn" (click)="emailLogin(form)">
-        Iniciar sesión
       </button>
 
       <div class="no-account">

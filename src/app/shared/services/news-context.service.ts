@@ -35,6 +35,7 @@ export class NewsContextService {
       (result: any) => {
         let cleanNews = this.cleanData(result.articles);
         cleanNews.map((article: Article) => this.newsArray.push(article));
+
         this.fetchData(url, page + 1);
       },
       (error) => console.error(JSON.stringify(error))

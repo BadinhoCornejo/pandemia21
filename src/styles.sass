@@ -16,6 +16,7 @@ h1
     width: 222px
     height: 47px
     background-color: $primary-color
+    color: #707070
 
     border-radius: 6px
     border: solid 1px #707070
@@ -26,6 +27,7 @@ h1
 
     &:hover
         border-color: $accent-color
+        color: $accent-color
 
 .login-title
     font: 26px "Spartan"
@@ -59,7 +61,7 @@ h1
         margin-top: 10px
 
     .log-with
-        width: 322px
+        width: 222px
         height: 47px
         margin-top: 8px
         padding-left: 10px
@@ -88,7 +90,7 @@ h1
 
     .no-account, .already-account
         display: inline-flex
-        margin-top: 8px
+        margin-top: 16px
 
         font: 12px "Spartan"
         color: #707070
@@ -152,3 +154,22 @@ h1.article-title
 
                     color: #707070
                     font-size: 12px
+.list-empty
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    img
+        width: 180px
+        margin-top: 8px
+    span
+        display: inline-flex
+        color: #000000
+        margin-top: 8px
+        a
+            text-decoration: none
+            color: #707070
+            cursor: pointer
+            padding-left: 4px
+            padding-right: 4px

@@ -30,7 +30,8 @@ export class NavbarComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogLoginDialogComponent, {
-      width: "auto",
+      width: "360px",
+      maxWidth: "360px",
     });
   }
 
@@ -67,7 +68,7 @@ export class NavbarComponent implements OnInit {
 
   triggerSearchBar(): void {
     console.log("Hidden brand");
-    
+
     this.showBrand = !this.showBrand;
     this.showSearchBar = !this.showSearchBar;
   }

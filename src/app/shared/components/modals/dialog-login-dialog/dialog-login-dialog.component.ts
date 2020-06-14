@@ -18,6 +18,7 @@ export class DialogLoginDialogComponent implements OnInit {
   submitted: Boolean = false;
   userFeedback: string = "";
   user: User;
+  hide = false;
 
   constructor(
     public dialogRef: MatDialogRef<DialogLoginDialogComponent>,
@@ -76,7 +77,7 @@ export class DialogLoginDialogComponent implements OnInit {
       });
   }
 
-  emailLogin(): void {
+  emailLogin(form): void {
     this.submitted = true;
 
     if (this.form.invalid) {
@@ -107,7 +108,8 @@ export class DialogLoginDialogComponent implements OnInit {
 
   openSignup(): void {
     const dialogRef = this.dialog.open(DialogSignupDialogComponent, {
-      width: "auto",
+      width: "360px",
+      maxWidth: "360px",
     });
 
     this.onNoClick();

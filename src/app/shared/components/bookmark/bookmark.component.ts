@@ -5,6 +5,8 @@ import { UsersService } from "../../services/users.service";
 import { ArticlesService } from "../../services/articles.service";
 import { SavedContextService } from "../../services/saved-context.service";
 
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 import { Article } from "../../../data/schema/article";
 import { User } from "../../../data/schema/user";
 
@@ -23,7 +25,8 @@ export class BookmarkComponent implements OnInit {
     private af: AngularFireAuth,
     private userService: UsersService,
     private articlesService: ArticlesService,
-    private savedNewsContext: SavedContextService
+    private savedNewsContext: SavedContextService,
+    private _snackBar: MatSnackBar
   ) {
     this.checkAuth();
   }
@@ -99,6 +102,8 @@ export class BookmarkComponent implements OnInit {
 
       this.userService.updateUser(this.user);
     });
+    this.isSaved = true;
+    this.openSnackBar("Se guardó una noticia", "Cerrar");
   }
 
   unSaveArticle() {
@@ -107,11 +112,17 @@ export class BookmarkComponent implements OnInit {
     if (index > -1) {
       this.user.saved.splice(index, 1);
     }
-
+    this.isSaved = false;
     this.userService.updateUser(this.user);
   }
 
   noRepeat(p: Array<string>): Array<string> {
     return p.filter((item, index) => p.indexOf(item) == index);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }

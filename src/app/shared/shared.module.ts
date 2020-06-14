@@ -1,8 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { ScrollingModule } from "@angular/cdk/scrolling";
 
 import { MaterialModule } from "./material.module";
 
+import { ToastrModule } from "ngx-toastr";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
@@ -35,6 +37,7 @@ import { BookmarkComponent } from "./components/bookmark/bookmark.component";
 import { ArticleItemComponent } from "./components/article-item/article-item.component";
 import { ArticleMdItemComponent } from "./components/article-md-item/article-md-item.component";
 import { ProgressComponent } from "./components/progress/progress.component";
+import { ScrollTopComponent } from "./components/scroll-top/scroll-top.component";
 
 //SERVICES
 import { AuthService } from "./services/auth.service";
@@ -65,6 +68,7 @@ library.add(
     ArticleItemComponent,
     ArticleMdItemComponent,
     ProgressComponent,
+    ScrollTopComponent,
   ],
   entryComponents: [DialogLoginDialogComponent, DialogSignupDialogComponent],
   imports: [
@@ -74,6 +78,12 @@ library.add(
     RouterModule,
     FontAwesomeModule,
     MaterialModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: "toast-top-right",
+      preventDuplicates: true,
+    }),
+    ScrollingModule,
   ],
   providers: [AuthService, NewsService, UsersService, ArticlesService],
   exports: [
@@ -83,6 +93,8 @@ library.add(
     RouterModule,
     FontAwesomeModule,
     MaterialModule,
+    ToastrModule,
+    ScrollingModule,
     SearchbarComponent,
     QuickProfileComponent,
     DialogSignupDialogComponent,
@@ -91,6 +103,7 @@ library.add(
     ArticleItemComponent,
     ArticleMdItemComponent,
     ProgressComponent,
+    ScrollTopComponent,
   ],
 })
 export class SharedModule {}

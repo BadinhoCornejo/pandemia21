@@ -4,24 +4,13 @@
       <h1 class="brand">PANDEMIA21</h1>
     </div>
   </div>
-  <div class="search-bar-container" *ngIf="showSearchBar">
+  <div class="search-bar-container">
     <div class="search-bar">
-      <app-searchbar
-        [isMobile]="isMobile"
-        [showSearchBar]="showSearchBar"
-        (triggerSearchBar)="triggerSearchBar()"
-      ></app-searchbar>
+      <app-searchbar></app-searchbar>
     </div>
   </div>
 
   <div class="user-profile-container">
-    <div
-      class="search-icon"
-      *ngIf="!showSearchBar"
-      (click)="triggerSearchBar()"
-    >
-      <fa-icon [icon]="['fas', 'search']" size="lg"></fa-icon>
-    </div>
     <div class="saved" *ngIf="user !== null" [routerLink]="['/saved']">
       <fa-icon
         [icon]="['far', 'bookmark']"

@@ -1,10 +1,11 @@
-<div class="searchbar-container" *ngIf="showSearchBar">
+<div class="searchbar-container">
   <div class="search-icon">
     <fa-icon [icon]="['fas', 'search']" size="lg"></fa-icon>
   </div>
   <input
     #searchBar
     [(ngModel)]="searchValue"
+    id="searchinput"
     type="search"
     class="searchbar"
     name="search"
